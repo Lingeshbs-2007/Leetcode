@@ -1,0 +1,22 @@
+// Last updated: 9/11/2026, 9:22:09 AM
+class Solution {
+    public int minPenalty(int period, int[] lights, int[] arrivalTime) {
+        int maxLight = 0;
+        for(int light : lights){
+            maxLight = Math.max(maxLight,light);
+        }
+        int answer =0;
+        for(int time : arrivalTime){
+            int r = time % period;
+            int wait ;
+            if( r < maxLight){
+                wait = 0;
+            }
+            else{
+                wait = period - r;
+            }
+            answer = Math.max(answer,wait);
+        }
+            return answer;
+    }
+}
